@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from "../pages/feed/feed.module";
 import { DocumentosPageModule } from "../pages/documentos/documentos.module";
+import { MoovieProvider } from '../providers/moovie/moovie';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DocumentosPageModule } from "../pages/documentos/documentos.module";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MoovieProvider
   ]
 })
 export class AppModule {}

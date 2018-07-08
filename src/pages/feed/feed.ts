@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { MoovieProvider } from '../../providers/moovie/moovie';
 /**
  * Generated class for the FeedPage page.
  *
@@ -8,24 +8,51 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
-@Component({
-  selector: 'page-feed',
-  templateUrl: 'feed.html',
-})
-export class FeedPage {
+ @IonicPage()
+ @Component({
+ 	selector: 'page-feed',
+ 	templateUrl: 'feed.html',
+ 	providers:[
+ 	MoovieProvider
+ 	]
 
- public nome_usuario:string = "Raislan Devloper";
 
- public somaDoisNumero(valor1:number,valor2:number):void{
-    alert(valor1+valor2);
- }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+ })
+ export class FeedPage {
 
-  ionViewDidLoad() {
+ 	public feed = {
+ 		titulo:"Raislan da Silva",
+ 		data:"July 8, 2018",
+ 		descricao:"Criação do meu primeiro app",
+ 		qtd_likes:12,
+ 		qtd_comments:4,
+ 		time_comments:"11h Ju"
+ 	}
+
+ 	public nome_usuario:string = "Raislan Devloper";
+
+ 	public somaDoisNumero(valor1:number,valor2:number):void{
+ 		alert(valor1+valor2);
+ 	}
+
+ 	constructor(
+ 		public navCtrl: NavController, 
+ 		public navParams: NavParams,
+ 		private movieProvider: MoovieProvider
+ 		) {
+ 	}
+
+ 	ionViewDidLoad() {
     //this.somaDoisNumero(10,5);
-  }
+
+    this.movieProvider.getLatesMovies().subscribe(
+    	data=>{
+    		console.log(data);
+    	}, error=>{
+    		console.log(error);
+    	}
+    )
+}
 
 }
