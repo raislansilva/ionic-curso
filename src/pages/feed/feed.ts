@@ -8,51 +8,57 @@ import { MoovieProvider } from '../../providers/moovie/moovie';
  * Ionic pages and navigation.
  */
 
- @IonicPage()
- @Component({
- 	selector: 'page-feed',
- 	templateUrl: 'feed.html',
- 	providers:[
- 	MoovieProvider
- 	]
+@IonicPage()
+@Component({
+	selector: 'page-feed',
+	templateUrl: 'feed.html',
+	providers: [
+		MoovieProvider
+	]
 
 
 
- })
- export class FeedPage {
 
- 	public feed = {
- 		titulo:"Raislan da Silva",
- 		data:"July 8, 2018",
- 		descricao:"Criação do meu primeiro app",
- 		qtd_likes:12,
- 		qtd_comments:4,
- 		time_comments:"11h Ju"
- 	}
+})
+export class FeedPage {
 
- 	public nome_usuario:string = "Raislan Devloper";
+	public feed = {
+		titulo: "Raislan da Silva",
+		data: "July 8, 2018",
+		descricao: "Criação do meu primeiro app",
+		qtd_likes: 12,
+		qtd_comments: 4,
+		time_comments: "11h Ju"
+	}
 
- 	public somaDoisNumero(valor1:number,valor2:number):void{
- 		alert(valor1+valor2);
- 	}
+	public listar_videos = Array<any>();
 
- 	constructor(
- 		public navCtrl: NavController, 
- 		public navParams: NavParams,
- 		private movieProvider: MoovieProvider
- 		) {
- 	}
+	public nome_usuario: string = "Raislan Devloper";
 
- 	ionViewDidLoad() {
-    //this.somaDoisNumero(10,5);
+	public somaDoisNumero(valor1: number, valor2: number): void {
+		alert(valor1 + valor2);
+	}
 
-    this.movieProvider.getLatesMovies().subscribe(
-    	data=>{
-    		console.log(data);
-    	}, error=>{
-    		console.log(error);
-    	}
-    )
-}
+	constructor(
+		public navCtrl: NavController,
+		public navParams: NavParams,
+		private movieProvider: MoovieProvider
+	) {
+	}
+
+	ionViewDidLoad() {
+		//this.somaDoisNumero(10,5);
+
+		this.movieProvider.getLatesMovies().subscribe(
+			data => {
+				const response = (data as any);
+				const objeto_retorno = JSON.parse(response._body);
+				console.log(objeto_retorno);
+				this.listar_videos = objeto_retorno.result;
+			}, error => {
+				console.log(error);
+			}
+		)
+	}
 
 }

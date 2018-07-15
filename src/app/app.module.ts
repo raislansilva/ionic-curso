@@ -8,11 +8,13 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import {HttpModule} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from "../pages/feed/feed.module";
 import { DocumentosPageModule } from "../pages/documentos/documentos.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
+import { NgForOf } from '../../node_modules/@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { MoovieProvider } from '../providers/moovie/moovie';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FeedPageModule, 
-    DocumentosPageModule
+    DocumentosPageModule,
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
