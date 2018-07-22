@@ -22,7 +22,7 @@ export class configProvider {
 
   //Recupera os dados do local storage
   getConfigData():any{
-    return localStorage.getItem("config");
+    return localStorage.getItem("config")||{};
   }
 
    //Grava os dados do local storage

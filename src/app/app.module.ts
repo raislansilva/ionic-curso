@@ -15,6 +15,9 @@ import { FeedPageModule } from "../pages/feed/feed.module";
 import { DocumentosPageModule } from "../pages/documentos/documentos.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
 import { NgForOf } from '../../node_modules/@angular/common';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { NgForOf } from '../../node_modules/@angular/common';
     FeedPageModule, 
     DocumentosPageModule,
     HttpModule,
+    ConfiguracoesPageModule,
+    PerfilPageModule,
+    SobrePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

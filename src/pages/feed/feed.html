@@ -14,13 +14,13 @@
 
 
 <ion-content padding>
-	<ion-card *ngFor="let filme of listar_videos">
+	<ion-card *ngFor="let filmes of listar_filmes">
 
 		<ion-item>
 			<ion-avatar item-start>
 				<img src="assets/imgs/avatar.png">
 			</ion-avatar>
-			<h2 class="title_principal">{{filme.original_title}}</h2>
+			<h2 class="title_principal">{{feed.titulo}}</h2>
 			<p class="date">{{feed.data}}</p>
 		</ion-item>
 

@@ -31,7 +31,7 @@ export class FeedPage {
 		time_comments: "11h Ju"
 	}
 
-	public listar_videos = Array<any>();
+	public listar_videos = new Array<any>();
 
 	public nome_usuario: string = "Raislan Devloper";
 
